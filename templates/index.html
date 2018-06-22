@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div>
+    <div id="widget">
+        Qunatidade atual: <% quantity %>
+        <button v-on:click="update">Clique aqui</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    new Vue({
+        el: globalConfigs.el,
+        delimiters: globalConfigs.delimiters,
+        data: {
+            quantity: 0
+        },
+        methods: {
+            update: function() {
+                this.quantity++;
+            }
+        },
+    });
+</script>
+{% endblock %}

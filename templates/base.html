@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Vue+Django</title>
+    </head>
+    <body>
+        <div id="app-content">
+            <h1>This is a Django+Vue App</h1>
+            <h1>App running in {% if debug %}Debug{% else %}Production{% endif %} Mode</h1>
+            {% block app_content %}{% endblock %}
+        </div>
+        {% if debug %}
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        {% else %}
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        {% endif %}
+        <script>
+            var globalConfigs = {
+                el: '#app-content',
+                delimiters: ['<%','%>'],
+            };
+        </script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
